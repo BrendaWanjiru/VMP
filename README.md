@@ -1,74 +1,59 @@
-![Cozystack](img/cozystack-logo-black.svg#gh-light-mode-only)
-![Cozystack](img/cozystack-logo-white.svg#gh-dark-mode-only)
+VMP
+Project: VM Management Platform with Role-Based Access and Automation
 
-[![Open Source](https://img.shields.io/badge/Open-Source-brightgreen)](https://opensource.org/)
-[![Apache-2.0 License](https://img.shields.io/github/license/aenix-io/cozystack)](https://opensource.org/licenses/)
-[![Support](https://img.shields.io/badge/$-support-12a0df.svg?style=flat)](https://aenix.io/contact-us/#meet)
-[![Active](http://img.shields.io/badge/Status-Active-green.svg)](https://aenix.io/cozystack/)
-[![GitHub Release](https://img.shields.io/github/release/aenix-io/cozystack.svg?style=flat)](https://github.com/aenix-io/cozystack)
-[![GitHub Commit](https://img.shields.io/github/commit-activity/y/aenix-io/cozystack)](https://github.com/aenix-io/cozystack) 
+Objective: Using the programming languages and frameworks you're most familiar with, create a simplified web-based virtual machine (VM) management platform. The platform should allow users/customers to manage their Virtual machines (VMs), including creating backups, performing basic automation tasks like starting/stopping/, and handling payments for services. 
+Security features such as Single Sign-On (SSO) and role-based access control should be integrated, along with CI/CD automation for deployment on a Kubernetes cluster.
 
-# Cozystack
 
-**Cozystack** is a free PaaS platform and framework for building clouds.
+Project Requirements
+1. User Management and Role-Based Access:
 
-With Cozystack, you can transform your bunch of servers into an intelligent system with a simple REST API for spawning Kubernetes clusters, Database-as-a-Service, virtual machines, load balancers, HTTP caching services, and other services with ease.
+        Build a basic user management system that allows for multiple roles (e.g., Admin, Standard User, and Guest).
+        Admin users can create, update, and delete VMs, move VMs between users, and track user activities.
+        Standard Users can manage their own VMs, create backups, and view billing information.
+        Guest users can view the available services but cannot perform any actions.
 
-You can use Cozystack to build your own cloud or to provide a cost-effective development environments.  
+2. VM Management Automation:
 
-## Use-Cases
+        Implement a simple VM management interface where users can create and delete virtual machines.
+        Add the ability to move VMs between users, with notifications sent to the original and new users, including an audit log of the action.
+        Create a backup and snapshot feature where users can back up their VMs and get real-time pricing based on the disk size selected.
 
-* [**Using Cozystack to build public cloud**](https://cozystack.io/docs/use-cases/public-cloud/)  
-You can use Cozystack as backend for a public cloud
+3. Payment System Integration:
 
-* [**Using Cozystack to build private cloud**](https://cozystack.io/docs/use-cases/private-cloud/)  
-You can use Cozystack as platform to build a private cloud powered by Infrastructure-as-Code approach
+        Integrate a mock payment system where users must pay to access certain features, such as creating additional VMs or backing up existing ones.
+        Include a simple admin panel for tracking payments and suspending user accounts if payments are not received.
+        For the purpose of this exercise, mock payments and implement a simple Test Mode where a transaction always succeeds.
 
-* [**Using Cozystack as Kubernetes distribution**](https://cozystack.io/docs/use-cases/kubernetes-distribution/)  
-You can use Cozystack as Kubernetes distribution for Bare Metal
+4. Security and Single Sign-On (SSO):
 
-## Screenshot
+        Implement Single Sign-On (SSO) using any available authentication provider (e.g., Google, GitHub).
+        Secure the platform by implementing Role-Based Access Control (RBAC) and ensuring only authorized users can access certain features.
+        Use secure API endpoints and ensure that sensitive data is protected using best practices (e.g., JWTs, OAuth2).
 
-![Cozystack screenshot](https://cozystack.io/img/screenshot.png)
+5. Rate Plans and Subscription Management:
 
-## Documentation
+        Add Rate Plans (e.g., Platinum, Gold, Silver, Bronze) that limit the number of VMs or backups users can create.
+        Implement a system where users can upgrade or downgrade their subscription plans.
+        Multi-client accounts should be allowed, where a parent client can manage multiple users under a single billing account.
 
-The documentation is located on official [cozystack.io](https://cozystack.io) website.
+6. Kubernetes Deployment:
 
-Read [Get Started](https://cozystack.io/docs/get-started/) section for a quick start.
+        Containerize the application using Docker or Cloud Native Buildpacks.
+        Deploy the application to a Kubernetes cluster (single-node or multi-node setup on your VM).
+        Configure SSL for secure communication.
+        Set up a CI/CD pipeline using GitHub Actions that automates testing, building, and deployment to the Kubernetes cluster.
 
-If you encounter any difficulties, start with the [troubleshooting guide](https://cozystack.io/docs/troubleshooting/), and work your way through the process that we've outlined.
+7. Documentation and Testing:
 
-## Versioning
+        Provide a README file with instructions on how to set up and run the application.
+        Include unit tests for key features (e.g., VM creation, role-based access control, payment handling).
+        Ensure detailed documentation of how the CI/CD pipeline is set up and how the deployment works in the Kubernetes environment.
 
-Versioning adheres to the [Semantic Versioning](http://semver.org/) principles.  
-A full list of the available releases is available in the GitHub repository's [Release](https://github.com/aenix-io/cozystack/releases) section.
 
-- [Roadmap](https://github.com/orgs/aenix-io/projects/2)
-
-## Contributions
-
-Contributions are highly appreciated and very welcomed!
-
-In case of bugs, please, check if the issue has been already opened by checking the [GitHub Issues](https://github.com/aenix-io/cozystack/issues) section.
-In case it isn't, you can open a new one: a detailed report will help us to replicate it, assess it, and work on a fix.
-
-You can express your intention in working on the fix on your own.
-Commits are used to generate the changelog, and their author will be referenced in it.
-
-In case of **Feature Requests** please use the [Discussion's Feature Request section](https://github.com/aenix-io/cozystack/discussions/categories/feature-requests).
-
-You can join our weekly community meetings (just add this events to your [Google Calendar](https://calendar.google.com/calendar?cid=ZTQzZDIxZTVjOWI0NWE5NWYyOGM1ZDY0OWMyY2IxZTFmNDMzZTJlNjUzYjU2ZGJiZGE3NGNhMzA2ZjBkMGY2OEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t) or [iCal](https://calendar.google.com/calendar/ical/e43d21e5c9b45a95f28c5d649c2cb1e1f433e2e653b56dbbda74ca306f0d0f68%40group.calendar.google.com/public/basic.ics)) or [Telegram group](https://t.me/cozystack).
-
-## License
-
-Cozystack is licensed under Apache 2.0.  
-The code is provided as-is with no warranties.
-
-## Commercial Support
-
-[**Ænix**](https://aenix.io) offers enterprise-grade support, available 24/7.
-
-We provide all types of assistance, including consultations, development of missing features, design, assistance with installation, and integration.
-
-[Contact us](https://aenix.io/contact/)
+Skills Being Tested:
+        Frontend Development: Creating a user-friendly interface with role-based access and user management.
+        Backend Development: Building APIs to handle VM management, user roles, payments, and backups.
+        Automation & CI/CD: Setting up GitHub Actions to automate testing, building, and deploying the containerized application to a Kubernetes cluster.
+        Security: Implementing SSO, secure API endpoints, and role-based access control.
+        Containerization & Kubernetes: Deploying the application on a Kubernetes cluster, ensuring it's accessible and secure.
